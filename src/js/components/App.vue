@@ -21,12 +21,15 @@
             <router-view/>
         </div>
 
+        <div class="settings-btn" v-on:click="isSettingsVisible = !isSettingsVisible"> SET </div>
         <toast-container/>
+        <settings-touch-panel v-model="isSettingsVisible" v-on:close="isSettingsVisible = !isSettingsVisible"/>
     </section>
 </template>
 
 <script>
 import IconLoopa from  '@img/icons/material-duotone/search.svg?inline';
+import SettingsTouchPanel from '~/components/UiTouchPanel';
 import ToastContainer from '~/components/UiToastContainer.vue';
 import UiSearch from '~/components/UiSearch.vue';
 
@@ -34,9 +37,21 @@ export default {
     data() {
         return {
             searchVisible: false,
+            isSettingsVisible: false
         };
     },
 
-    components: { ToastContainer, IconLoopa, UiSearch },
+    components: { ToastContainer, IconLoopa, UiSearch, SettingsTouchPanel },
 };
 </script>
+
+<style lang="scss">
+  .settings-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 50%
+  }
+</style>

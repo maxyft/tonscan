@@ -109,10 +109,6 @@ export default {
   .touch-panel {
     pointer-events: none;
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: end;
     width: 100%;
     height: 100%;
     top: 0;
@@ -130,14 +126,17 @@ export default {
     top: 0;
     left: 0;
     z-index: 1;
-    background: rgba(0,0,0, .2);
+    background: rgba(219, 210, 255, 0.2);
   }
 
   .touch-panel__main-area {
-    height: 500px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50%;
     width: 100%;
     z-index: 2;
-    background: rgba(0,0,0, .3);
+    background: #d1b9ff;
     &--with-transition {
       transition: transform .15s ease;
     }

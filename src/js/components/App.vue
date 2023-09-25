@@ -21,9 +21,9 @@
             <router-view/>
         </div>
 
-        <div class="settings-btn" v-on:click="isSettingsVisible = !isSettingsVisible"> SET </div>
+        <div class="settings-btn" v-on:click="handleToggleSettings"> SET </div>
         <toast-container/>
-        <settings-touch-panel v-model="isSettingsVisible" v-on:close="isSettingsVisible = !isSettingsVisible"/>
+        <settings-touch-panel v-model="isSettingsVisible" v-on:close="handleToggleSettings"/>
     </section>
 </template>
 
@@ -40,12 +40,27 @@ export default {
             isSettingsVisible: false
         };
     },
+    methods: {
+      handleToggleSettings () {
+        this.isSettingsVisible = !this.isSettingsVisible;
+        document.documentElement.classList.toggle('overscroll-disabled')
+      }
+    },
 
     components: { ToastContainer, IconLoopa, UiSearch, SettingsTouchPanel },
 };
 </script>
 
 <style lang="scss">
+
+  .overscroll-disabled {
+    overflow: hidden;
+    overscroll-behavior: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .settings-btn {
     position: absolute;
     top: 15px;
